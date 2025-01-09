@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script type ="module" src ="clases.js" defer></script>
+    <script type ="module" src ="Alabay.js" defer></script>
+    
+</head>
+<body>
+    
+        <input type = "text" placeholder = "Modelo" id = "Modelo"> <br>
+        <input type = "number" placeholder = "Min Vel" id = "MinVel">
+        <input type = "number" placeholder = "Max Vel" id = "MaxVel">
+        <br>
+        <select id = "Traccion">
+            <option value = "" disabled selected> Traccion del Vehiculo </option>
+            <option value = "blanda"> Blanda </option>
+            <option value = "mediana"> Mediana </option>
+            <option value = "dura"> Dura </option>
+        </select>
+        <br>
+        <select id = "TipoVehiculo">
+            <option value = "" disabled selected> Tipo de Vehiculo </option>
+            <option value = "coche"> Coche </option>
+            <option value = "motocicleta"> Motocicleta </option>
+        </select>
+        <br>
+        <button id = "NuevoVehiculoButton"> Nuevo Vehiculo </button>
+        <button id = "Cargar EstadisticasButton"> Cargar Estadísticas </button>
+    
+</body>
+</html>
