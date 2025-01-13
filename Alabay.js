@@ -1,8 +1,8 @@
-import { Circuito } from "./clases";
-import { Vehiculo } from "./clases";
-import { Participante } from "./clases";
-import { Motocicleta } from "./clases";
-import { Coche } from "./clases";
+import { Circuito } from "./clases.js";
+import { Vehiculo } from "./clases.js";
+import { Participante } from "./clases.js";
+import { Motocicleta } from "./clases.js";
+import { Coche } from "./clases.js";
 
 let Vehiculos = new Array();
 document.getElementById("NuevoVehiculoButton").addEventListener("click", function(){
@@ -24,7 +24,7 @@ document.getElementById("NuevoVehiculoButton").addEventListener("click", functio
 
     console.log(Modelo, MinVel, MaxVel, Traccion, TipoVehiculo);
     
-    Vehiculos.push(new Vehiculo(Modelo, Traccion, AvanceMin, AvanceMax, V));
+    Vehiculos.push(new Vehiculo(Modelo, Traccion, MinVel, MaxVel, V));
     console.log(Vehiculos);
 
 });

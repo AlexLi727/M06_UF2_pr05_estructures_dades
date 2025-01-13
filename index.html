@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
-    <script type ="module" src ="clases.js" defer></script>
-    <script type ="module" src ="Alabay.js" defer></script>
-    
+    <script type = "module" src = "Alabay.js" defer></script>
 </head>
 <body>
-    
+    <div>
         <input type = "text" placeholder = "Modelo" id = "Modelo"> <br>
         <input type = "number" placeholder = "Min Vel" id = "MinVel">
         <input type = "number" placeholder = "Max Vel" id = "MaxVel">
@@ -30,6 +27,44 @@
         <br>
         <button id = "NuevoVehiculoButton"> Nuevo Vehiculo </button>
         <button id = "Cargar EstadisticasButton"> Cargar Estadísticas </button>
+    </div>
+
+    <div>
+        <input type = "text" placeholder = "Nombre"><br>
+        <input type = "text" placeholder = "Vehiculo (Modelo)"> <br>
+        <input type = number placeholder = "1ros">
+        <input type = number placeholder = "2dos">
+        <input type = number placeholder = "3ros">
+        <input type = number placeholder = "fuera"> <br>
+        <button> Guardar Participante </button>
+        <button> Cargar Estadísticas </button>
+    </div>
+
+    <div>
+        <input type = "text" placeholder = "Nombre">
+        <input type = "number" placeholder = "Longitud">
+        <select>
+            <option value = "" disabled selected> Tiempo/Clima </option>
+            <option value = "lluvioso"> Lluvioso </option>
+            <option value = "humedo"> Húmedo </option>
+            <option value = "seco"> Seco </option>
+        </select>
+        <button> Nueva carrera </button>
+    </div>
+
+    <div>
+        <input type = "text" placeholder = "Circuito">
+        <input type = "text" placeholder = "Participante (Nombre)">
+        <button> Asignar </button>
+    </div>
+
+    <div>
+        <input type = "text" placeholder = "Circuito">
+        <input type = "text" placeholder = "Participante (Nombre)">
+        <button> Quitar </button> 
+    </div>
+
+    <button> Cargar circuito </button>
     
 </body>
 </html>

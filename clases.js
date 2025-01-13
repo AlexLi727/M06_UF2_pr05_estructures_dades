@@ -38,7 +38,7 @@ export class Vehiculo{
 }
 
 export class Motocicleta extends Vehiculo{
-
+    
 }
 
 export class Coche extends Vehiculo{
