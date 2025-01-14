@@ -5,6 +5,18 @@ import { Motocicleta } from "./clases.js";
 import { Coche } from "./clases.js";
 
 let Vehiculos = new Array();
+
+function resetVehicles(){
+    if(Vehiculos){
+        Vehiculos.forEach(function(){
+            document.getElementById("VehiculoSeleccionado").innerHTML += (`<option>`+ Vehiculos[0].Modelo  +`</option>`);
+        });
+            
+        
+        
+    }
+}
+
 document.getElementById("NuevoVehiculoButton").addEventListener("click", function(){
     var Modelo = document.getElementById("Modelo").value;
     var MinVel = document.getElementById("MinVel").value;
@@ -26,5 +38,6 @@ document.getElementById("NuevoVehiculoButton").addEventListener("click", functio
     
     Vehiculos.push(new Vehiculo(Modelo, Traccion, MinVel, MaxVel, V));
     console.log(Vehiculos);
+    resetVehicles();
 
 });
