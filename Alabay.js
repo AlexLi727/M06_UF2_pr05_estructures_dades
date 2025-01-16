@@ -7,13 +7,11 @@ import { Coche } from "./clases.js";
 let Vehiculos = new Array();
 
 function resetVehicles(){
+    document.getElementById("VehiculoSeleccionado").innerHTML = ("<option disabled selected> Seleccione Vehiculo </option>")
     if(Vehiculos){
-        Vehiculos.forEach(function(){
-            document.getElementById("VehiculoSeleccionado").innerHTML += (`<option>`+ Vehiculos[0].Modelo  +`</option>`);
+        Vehiculos.forEach(function(a, index, v){
+            document.getElementById("VehiculoSeleccionado").innerHTML += (`<option value = `+ v[index].Modelo +`>`+ v[index].Modelo  +`</option>`);
         });
-            
-        
-        
     }
 }
 
@@ -25,19 +23,31 @@ document.getElementById("NuevoVehiculoButton").addEventListener("click", functio
     var TipoVehiculo = document.getElementById("TipoVehiculo").value;
     switch(TipoVehiculo){
         case "coche":
-            var V = new Coche();
+            var V = new Coche(Modelo, Traccion, MinVel, MaxVel)
+            console.log("xd");
             break;
         case "motocicleta":
-            var V = new Motocicleta();
+            var V = new Motocicleta(Modelo, Traccion, MinVel, MaxVel)
+            console.log("xd");
             break;
         default:
             break;
     }
 
     console.log(Modelo, MinVel, MaxVel, Traccion, TipoVehiculo);
-    
-    Vehiculos.push(new Vehiculo(Modelo, Traccion, MinVel, MaxVel, V));
+    Vehiculos.push(V);
     console.log(Vehiculos);
     resetVehicles();
 
 });
+
+document.getElementById("CargarEstadisticasButton").addEventListener("click", function(){
+    var Modelo = document.getElementById("VehiculoSeleccionado").value;
+    for(let i = 0; i < Vehiculos.length; i++){
+        if(Vehiculos[i].Modelo === Modelo){
+            document.getElementById("VehiculosEstadisticas").innerHTML = Modelo;
+            break;
+        }
+    }
+    
+})

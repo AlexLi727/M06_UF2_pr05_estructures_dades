@@ -25,22 +25,24 @@ export class Vehiculo{
     Modelo
     Traccion
     AvanceMin
-    AvanceMax
-    TipoVehiculo;
-    constructor(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo){
+    AvanceMax;
+    constructor(Modelo, Traccion, AvanceMin, AvanceMax){
         this.Modelo = Modelo;
         this.Traccion = Traccion;
         this.AvanceMin = AvanceMin;
         this.AvanceMax = AvanceMax;
-        this.TipoVehiculo = TipoVehiculo;
     }
 
 }
 
 export class Motocicleta extends Vehiculo{
-    
+    constructor(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo){
+        super(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo);
+    }
 }
 
 export class Coche extends Vehiculo{
-
+    constructor(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo){
+        super(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo);
+    }
 }
