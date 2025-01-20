@@ -10,6 +10,8 @@
     <link href = "project.css" rel = "stylesheet">
 </head>
 <body>
+
+    <!-- FORMULARIO PARA CREACIÓN DE COCHES -->
     <div class = "mb-5" id = "FormularioVehiculo">
         <input type = "text" placeholder = "Modelo" id = "Modelo"> <br>
         <input type = "number" placeholder = "Min Vel" id = "MinVel">
@@ -30,24 +32,28 @@
         <br>
         <button id = "NuevoVehiculoButton"> Nuevo Vehiculo </button>
         <button id = "CargarEstadisticasButton"> Cargar Estadísticas </button>
-        <select id = VehiculoSeleccionado>
+        <select id = "VehiculoSeleccionado">
             <option value = "" disabled selected> Seleccione Vehiculo </option>
         </select>
 
         <div id = "VehiculosEstadisticas"> </div>
     </div>
 
+    <!-- FORMULARIO PARA CREACIÓN DE JUGADORES -->
     <div class = "mb-5">
-        <input type = "text" placeholder = "Nombre"><br>
-        <input type = "text" placeholder = "Vehiculo (Modelo)"> <br>
-        <input type = number placeholder = "1ros">
-        <input type = number placeholder = "2dos">
-        <input type = number placeholder = "3ros">
-        <input type = number placeholder = "fuera"> <br>
-        <button> Guardar Participante </button>
+        <input type = "text" placeholder = "Nombre" id = "Nombre"><br>
+        <select id = "VehiculoSeleccionado2">
+            <option value = "" disabled selected> Seleccione Vehiculo </option>
+        </select> <br>
+        <input type = number placeholder = "1ros" id = "Primeros">
+        <input type = number placeholder = "2dos" id = "Segundos">
+        <input type = number placeholder = "3ros" id = "Terceros">
+        <input type = number placeholder = "fuera" id = "FueraPodio"> <br>
+        <button id = "NuevoParticipanteButton"> Guardar Participante </button>
         <button> Cargar Estadísticas </button>
     </div>
 
+    <!-- FORMULARIO PARA CREACIÓN DE CIRCUITOS -->
     <div>
         <input type = "text" placeholder = "Nombre">
         <input type = "number" placeholder = "Longitud">
@@ -60,12 +66,14 @@
         <button> Nueva carrera </button>
     </div>
 
+    <!-- FORMULARIO PARA ASIGNAR PARTICIPANTES A UN CIRCUITO -->
     <div>
         <input type = "text" placeholder = "Circuito">
         <input type = "text" placeholder = "Participante (Nombre)">
         <button> Asignar </button>
     </div>
 
+    <!-- FORMULARIO PARA QUITAR PARTICIPANTES A UN CIRCUITO -->
     <div>
         <input type = "text" placeholder = "Circuito">
         <input type = "text" placeholder = "Participante (Nombre)">

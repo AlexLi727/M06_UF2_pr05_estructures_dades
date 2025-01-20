@@ -36,13 +36,13 @@ export class Vehiculo{
 }
 
 export class Motocicleta extends Vehiculo{
-    constructor(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo){
-        super(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo);
+    constructor(Modelo, Traccion, AvanceMin, AvanceMax){
+        super(Modelo, Traccion, AvanceMin, AvanceMax);
     }
 }
 
 export class Coche extends Vehiculo{
-    constructor(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo){
-        super(Modelo, Traccion, AvanceMin, AvanceMax, TipoVehiculo);
+    constructor(Modelo, Traccion, AvanceMin, AvanceMax){
+        super(Modelo, Traccion, AvanceMin, AvanceMax);
     }
 }
