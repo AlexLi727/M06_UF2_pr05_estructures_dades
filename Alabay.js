@@ -6,6 +6,7 @@ import { Coche } from "./clases.js";
 
 let Vehiculos = new Array();
 let Participantes = new Array();
+let Circuitos = new Array();
 
 function resetVehicles(){
     document.getElementById("VehiculoSeleccionado").innerHTML = ("<option disabled selected> Seleccione Vehiculo </option>");
@@ -20,7 +21,7 @@ function resetVehicles(){
 
 function getVehicleIndex(Model){
     for(var i = 0; i < Vehiculos.length; i++){
-        if(Vehiculos[i].Modelo === Model){
+        if(Vehiculos[i].Modelo.toLowerCase() === Model.toLowerCase()){
             return i;
         }
     }
@@ -37,7 +38,11 @@ document.getElementById("NuevoVehiculoButton").addEventListener("click", functio
 
     
     if(Modelo == "" || MinVel == "" || MaxVel == "" || Traccion == "" || TipoVehiculo == ""){
-        console.log("gay");
+        document.getElementById("Respuesta").innerHTML = "Llene todos los campos";
+    }else if(MaxVel < MinVel){
+        document.getElementById("Respuesta").innerHTML = "Velocidad max no puede ser mayor a velocidad min";
+    }else if(getVehicleIndex(Modelo) != -1  ){
+        document.getElementById("Respuesta").innerHTML = "El modelo del vehiculo ya existe"
     }else{
     switch(TipoVehiculo){
         case "coche":
@@ -83,11 +88,29 @@ document.getElementById("CargarEstadisticasButton").addEventListener("click", fu
 //Evento para crear participante
 document.getElementById("NuevoParticipanteButton").addEventListener("click", function(){
     var Nombre = document.getElementById("Nombre").value;
+    var Vehiculo = document.getElementById("VehiculoSeleccionado2").value;
     var Primeros = document.getElementById("Primeros").value;
     var Segundos = document.getElementById("Segundos").value;
     var Terceros = document.getElementById("Terceros").value;
-    var FueraPodio = document.getElementById("FueraPodio").value
+    var FueraPodio = document.getElementById("FueraPodio").value;
+    var Estadisticas = new Array();
+    Estadisticas["Primeros"] = Primeros;
+    Estadisticas["Segundos"] = Segundos;
+    Estadisticas["Terceros"] = Terceros;
+    Estadisticas["Fuera"] = FueraPodio;
 
-    // var newParticipante = new Participante(Nombre, )
+    var newParticipante = new Participante(Nombre, Vehiculos[getVehicleIndex(Vehiculo)], puestos);
 
+    Participantes.push(newParticipante);
+})
+
+//Evento para crear circuito
+document.getElementById("NuevaCarreraButton").addEventListener("click", function(){
+    var Nombre = document.getElementById("NombreCircuito").value;
+    var Longitud = document.getElementById("Longitud").value;
+    var Tiempo = document.getElementById("Tiempo").value;
+
+    var newCircuito = new Circuito(Nombre, Longitud, Tiempo);
+
+    Circuitos.push(newCircuito);
 })

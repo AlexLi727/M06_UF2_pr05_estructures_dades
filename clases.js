@@ -12,11 +12,11 @@ export class Circuito{
 export class Participante{
     Nombre
     Vehiculo
-    Puestos;
-    constructor(Nombre, Vehiculo, Puestos){
+    Estadisticas;
+    constructor(Nombre, Vehiculo, Estadisticas){
         this.Nombre = Nombre;
         this.Vehiculo = Vehiculo;
-        this.Puestos = Puestos;
+        this.Estadisticas = Estadisticas;
     }
 
 }

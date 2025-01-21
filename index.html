@@ -35,7 +35,7 @@
         <select id = "VehiculoSeleccionado">
             <option value = "" disabled selected> Seleccione Vehiculo </option>
         </select>
-
+        <div id = "Respuesta"></div>
         <div id = "VehiculosEstadisticas"> </div>
     </div>
 
@@ -55,15 +55,15 @@
 
     <!-- FORMULARIO PARA CREACIÓN DE CIRCUITOS -->
     <div>
-        <input type = "text" placeholder = "Nombre">
-        <input type = "number" placeholder = "Longitud">
-        <select>
+        <input type = "text" placeholder = "Nombre" id = "NombreCircuito">
+        <input type = "number" placeholder = "Longitud" id = "Longitud">
+        <select id = "Tiempo">
             <option value = "" disabled selected> Tiempo/Clima </option>
             <option value = "lluvioso"> Lluvioso </option>
             <option value = "humedo"> Húmedo </option>
             <option value = "seco"> Seco </option>
         </select>
-        <button> Nueva carrera </button>
+        <button id = "NuevaCarreraButton"> Nueva carrera </button>
     </div>
 
     <!-- FORMULARIO PARA ASIGNAR PARTICIPANTES A UN CIRCUITO -->
