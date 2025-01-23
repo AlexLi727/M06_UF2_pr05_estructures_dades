@@ -8,6 +8,13 @@ let Vehiculos = new Array();
 let Participantes = new Array();
 let Circuitos = new Array();
 
+Vehiculos.push(new Coche("Alabay", "dura", 50, 120));
+Vehiculos.push(new Motocicleta("Antucan", "mediana", 50, 120));
+Participantes.push(new Participante("Alex Alabau", Vehiculos[0], new Array(0, 0 ,0, 0)));
+Participantes.push(new Participante("Antonio Herrero", Vehiculos[1], new Array(0, 0, 0, 0)));
+Circuitos.push(new Circuito("Circuito Tormenta", 500, "lluvioso"));
+resetVehicles();
+
 function resetVehicles(){
     document.getElementById("VehiculoSeleccionado").innerHTML = ("<option disabled selected> Seleccione Vehiculo </option>");
     document.getElementById("VehiculoSeleccionado2").innerHTML = ("<option disabled selected> Seleccione Vehiculo </option>");
@@ -31,16 +38,16 @@ function getVehicleIndex(Model){
 //Evento para crear vehiculo
 document.getElementById("NuevoVehiculoButton").addEventListener("click", function(){
     var Modelo = document.getElementById("Modelo").value;
-    var MinVel = document.getElementById("MinVel").value;
-    var MaxVel = document.getElementById("MaxVel").value;
+    var MinVel = parseInt(document.getElementById("MinVel").value);
+    var MaxVel = parseInt(document.getElementById("MaxVel").value);
     var Traccion = document.getElementById("Traccion").value;
     var TipoVehiculo = document.getElementById("TipoVehiculo").value;
-
+    console.log(MinVel, MaxVel)
     
-    if(Modelo == "" || MinVel == "" || MaxVel == "" || Traccion == "" || TipoVehiculo == ""){
+    if(Modelo == "" ||  MinVel == NaN || MaxVel == NaN || Traccion == "" || TipoVehiculo == ""){
         document.getElementById("Respuesta").innerHTML = "Llene todos los campos";
     }else if(MaxVel < MinVel){
-        document.getElementById("Respuesta").innerHTML = "Velocidad max no puede ser mayor a velocidad min";
+        document.getElementById("Respuesta").innerHTML = "Velocidad min no puede ser mayor a velocidad max";
     }else if(getVehicleIndex(Modelo) != -1  ){
         document.getElementById("Respuesta").innerHTML = "El modelo del vehiculo ya existe"
     }else{
@@ -73,7 +80,7 @@ document.getElementById("NuevoVehiculoButton").addEventListener("click", functio
 document.getElementById("CargarEstadisticasButton").addEventListener("click", function(){
     var Modelo = document.getElementById("VehiculoSeleccionado").value;
     var indice = getVehicleIndex(Modelo);
-    
+
     if(indice != -1){
         document.getElementById("VehiculosEstadisticas").innerHTML = Vehiculos[indice].Modelo;
         document.getElementById("VehiculosEstadisticas").innerHTML += Vehiculos[indice].Traccion;
@@ -81,7 +88,7 @@ document.getElementById("CargarEstadisticasButton").addEventListener("click", fu
         document.getElementById("VehiculosEstadisticas").innerHTML += Vehiculos[indice].AvanceMax;
         document.getElementById("VehiculosEstadisticas").innerHTML += Vehiculos[indice].TipoVehiculo; 
     }else{
-        
+        //No se ha encontrado vehiculo
     }
 })
 
@@ -93,13 +100,15 @@ document.getElementById("NuevoParticipanteButton").addEventListener("click", fun
     var Segundos = document.getElementById("Segundos").value;
     var Terceros = document.getElementById("Terceros").value;
     var FueraPodio = document.getElementById("FueraPodio").value;
-    var Estadisticas = new Array();
+
+    if(Nombre == "" || Vehiculo == "" || Primeros == "" || Segundos == "" || Terceros == "" || FueraPodio == "")
+    var Estadisticas = new Array(); 
     Estadisticas["Primeros"] = Primeros;
     Estadisticas["Segundos"] = Segundos;
     Estadisticas["Terceros"] = Terceros;
     Estadisticas["Fuera"] = FueraPodio;
 
-    var newParticipante = new Participante(Nombre, Vehiculos[getVehicleIndex(Vehiculo)], puestos);
+    var newParticipante = new Participante(Nombre, Vehiculos[getVehicleIndex(Vehiculo)], Estadisticas);
 
     Participantes.push(newParticipante);
 })
