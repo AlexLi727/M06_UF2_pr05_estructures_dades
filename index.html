@@ -10,9 +10,14 @@
     <link href = "project.css" rel = "stylesheet">
 </head>
 <body>
-
-    <!-- FORMULARIO PARA CREACIÓN DE COCHES -->
-    <div class = "mb-5" id = "FormularioVehiculo">
+    <div class = "d-flex gap-5 justify-content-center navegador">
+        <p id = "nav-vehiculos">VEHICULOS</p>
+        <p id = "nav-participantes">PARTICIPANTES</p>
+        <p id = "nav-carrera">CARRERA</p>
+        <p id = "nav-circuitos">CIRCUITOS</p>
+    </div>
+    <!-- FORMULARIO PARA CREACIÓN DE VEHICULOS -->
+    <div class = "formulario mb-5" id = "FormularioVehiculo">
         <input type = "text" placeholder = "Modelo" id = "Modelo"> <br>
         <input type = "number" placeholder = "Min Vel" id = "MinVel">
         <input type = "number" placeholder = "Max Vel" id = "MaxVel">
@@ -39,8 +44,13 @@
         <div id = "VehiculosEstadisticas"> </div>
     </div>
 
+    <!-- LISTA DE VEHICULOS QUE PERMITE EDITAR, BORRAR Y VER -->
+    <div id = "ListaVehiculos">
+
+    </div>
+
     <!-- FORMULARIO PARA CREACIÓN DE JUGADORES -->
-    <div class = "mb-5">
+    <div class = "formulario mb-5" id = "FormularioParticipante">
         <input type = "text" placeholder = "Nombre" id = "Nombre"><br>
         <select id = "VehiculoSeleccionado2">
             <option value = "" disabled selected> Seleccione Vehiculo </option>
@@ -54,7 +64,7 @@
     </div>
 
     <!-- FORMULARIO PARA CREACIÓN DE CIRCUITOS -->
-    <div>
+    <div class = "formulario" id = "FormularioCircuito">
         <input type = "text" placeholder = "Nombre" id = "NombreCircuito">
         <input type = "number" placeholder = "Longitud" id = "Longitud">
         <select id = "Tiempo">
@@ -68,19 +78,21 @@
 
     <!-- FORMULARIO PARA ASIGNAR PARTICIPANTES A UN CIRCUITO -->
     <div>
-        <input type = "text" placeholder = "Circuito">
-        <input type = "text" placeholder = "Participante (Nombre)">
-        <button> Asignar </button>
+        <input list = "lista-circuitos" type = "text" placeholder = "Circuito">
+        <input list = "lista-vehiculos" type = "text" placeholder = "Participante (Nombre)">
+        <datalist id = "lista-vehiculos"></datalist>
+        <button id = "AsignarParticipanteButton"> Asignar </button>
     </div>
 
     <!-- FORMULARIO PARA QUITAR PARTICIPANTES A UN CIRCUITO -->
     <div>
-        <input type = "text" placeholder = "Circuito">
-        <input type = "text" placeholder = "Participante (Nombre)">
-        <button> Quitar </button> 
+        <input list = "lista-circuitos" type = "text" placeholder = "Circuito">
+        <input list = "lista-vehiculos-circuito" type = "text" placeholder = "Participante (Nombre)">
+        <datalist id = "lista-vehiculos-circuito"></datalist>
+        <button id = "QuitarParticipanteButton"> Quitar </button> 
     </div>
 
     <button> Cargar circuito </button>
-    
+    <datalist id = "lista-circuitos"></datalist>
 </body>
 </html>

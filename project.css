@@ -1,3 +1,38 @@
-#FormulariVehiculo{
+.navegador > p{
+    font-size: 30px;
     
 }
+#nav-carrera{
+    font-size: 40px;
+}
+.formulario{
+    width: 40%;
+    flex-wrap: wrap;
+    justify-self: center;
+    background-color: gray;
+}
+.formulario > *{
+    margin: 5px;
+    height: 50px;
+}
+
+#ListaVehiculos > table{
+    justify-self: center;
+    width: 50%;
+    background-color: greenyellow;
+    margin: 5px;
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+
+#ListaVehiculos > table > tr > *{
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+#ListaVehiculos > table > tr > div{
+    display: flex;
+    
+}
+
+

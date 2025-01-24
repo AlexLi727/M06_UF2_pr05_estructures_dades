@@ -10,8 +10,13 @@ let Circuitos = new Array();
 
 Vehiculos.push(new Coche("Alabay", "dura", 50, 120));
 Vehiculos.push(new Motocicleta("Antucan", "mediana", 50, 120));
-Participantes.push(new Participante("Alex Alabau", Vehiculos[0], new Array(0, 0 ,0, 0)));
-Participantes.push(new Participante("Antonio Herrero", Vehiculos[1], new Array(0, 0, 0, 0)));
+var Stats = new Array();
+Stats["Primeros"] = 0;
+Stats["Segundos"] = 0;
+Stats["Terceros"] = 0;
+Stats["Fuera"] = 0;
+Participantes.push(new Participante("Alex Alabau", Vehiculos[0], Stats));
+Participantes.push(new Participante("Antonio Herrero", Vehiculos[1], Stats));
 Circuitos.push(new Circuito("Circuito Tormenta", 500, "lluvioso"));
 resetVehicles();
 
@@ -22,8 +27,39 @@ function resetVehicles(){
         Vehiculos.forEach(function(a, index, v){
             document.getElementById("VehiculoSeleccionado").innerHTML += (`<option value = `+ v[index].Modelo +`>`+ v[index].Modelo  +`</option>`);
             document.getElementById("VehiculoSeleccionado2").innerHTML += (`<option value = `+ v[index].Modelo +`>`+ v[index].Modelo  +`</option>`);
+            document.getElementById("lista-vehiculos").innerHTML += (`<option value = `+ v[index].Modelo +`>`);
+            var tr = document.createElement("tr");
+            var tr2 = document.createElement("tr");
+            var div = document.createElement("table");
+
+            document.getElementById("ListaVehiculos").appendChild(div);
+
+            div.appendChild(tr2);
+            div.appendChild(tr);
+            
+            tr2.innerHTML += (`<th>Modelo</th>`);
+            tr2.innerHTML += (`<th>AvanceMin</th>`);
+            tr2.innerHTML += (`<th>AvanceMax</th>`);
+            tr2.innerHTML += (`<th>Traccion</th>`);
+            tr2.innerHTML += (`<th>Tipo Vehiculo</th>`);
+
+            tr.innerHTML += (`<td>`+ v[index].Modelo +`</td>`);
+            tr.innerHTML += (`<td>`+ v[index].AvanceMin +`</td>`);
+            tr.innerHTML += (`<td>`+ v[index].AvanceMax +`</td>`);
+            tr.innerHTML += (`<td>`+ v[index].Traccion +`</td>`);
+            if(v[index] instanceof Coche){
+                tr.innerHTML += (`<td> Coche </td>`);
+            }else{
+                tr.innerHTML += (`<td> Motocicleta </td>`);
+            }
+
+            div = document.createElement("div");
+            tr.appendChild(div);
+            div.innerHTML += (`<button>sadf</button>`);
+            div.innerHTML += (`<button>sadf</button>`)
         });
     }
+    
 }
 
 function getVehicleIndex(Model){
@@ -35,6 +71,18 @@ function getVehicleIndex(Model){
     return -1;
 }
 
+function hideForms(){
+    var FormularioVehiculo = document.getElementById("FormularioVehiculo");
+    var FormularioParticipantes = document.getElementById("FormularioParticipante");
+    var FormularioCircuito = document.getElementById("FormularioCircuito");
+
+    FormularioVehiculo.style = "display: none";
+    FormularioParticipantes.style = "display: none";
+    FormularioCircuito.style = "display: none";
+}
+
+
+
 //Evento para crear vehiculo
 document.getElementById("NuevoVehiculoButton").addEventListener("click", function(){
     var Modelo = document.getElementById("Modelo").value;
@@ -44,7 +92,7 @@ document.getElementById("NuevoVehiculoButton").addEventListener("click", functio
     var TipoVehiculo = document.getElementById("TipoVehiculo").value;
     console.log(MinVel, MaxVel)
     
-    if(Modelo == "" ||  MinVel == NaN || MaxVel == NaN || Traccion == "" || TipoVehiculo == ""){
+    if(Modelo == "" ||  isNaN(MinVel) || isNaN(MaxVel) || Traccion == "" || TipoVehiculo == ""){
         document.getElementById("Respuesta").innerHTML = "Llene todos los campos";
     }else if(MaxVel < MinVel){
         document.getElementById("Respuesta").innerHTML = "Velocidad min no puede ser mayor a velocidad max";
@@ -100,8 +148,10 @@ document.getElementById("NuevoParticipanteButton").addEventListener("click", fun
     var Segundos = document.getElementById("Segundos").value;
     var Terceros = document.getElementById("Terceros").value;
     var FueraPodio = document.getElementById("FueraPodio").value;
+    console.log(Primeros)
+    if(Nombre == "" || Vehiculo == "" || Primeros == "" || Segundos == "" || Terceros == "" || FueraPodio == ""){
 
-    if(Nombre == "" || Vehiculo == "" || Primeros == "" || Segundos == "" || Terceros == "" || FueraPodio == "")
+    }else{
     var Estadisticas = new Array(); 
     Estadisticas["Primeros"] = Primeros;
     Estadisticas["Segundos"] = Segundos;
@@ -111,6 +161,9 @@ document.getElementById("NuevoParticipanteButton").addEventListener("click", fun
     var newParticipante = new Participante(Nombre, Vehiculos[getVehicleIndex(Vehiculo)], Estadisticas);
 
     Participantes.push(newParticipante);
+
+    console.log(Participantes);
+    }
 })
 
 //Evento para crear circuito
@@ -122,4 +175,14 @@ document.getElementById("NuevaCarreraButton").addEventListener("click", function
     var newCircuito = new Circuito(Nombre, Longitud, Tiempo);
 
     Circuitos.push(newCircuito);
+});
+
+//Evento para asignar participantes
+document.getElementById("AsignarParticipanteButton").addEventListener("click", function(){
+
+});
+
+//Evento para quitar participantes
+document.getElementById("QuitarParticipanteButton").addEventListener("click", function(){
+
 })

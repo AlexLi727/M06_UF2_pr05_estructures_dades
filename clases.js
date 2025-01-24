@@ -2,6 +2,7 @@ export class Circuito{
     Nombre
     Tiempo
     Longitud;
+    Participantes;
     constructor(Nombre, Tiempo, Longitud){
         this.Nombre = Nombre;
         this.Tiempo = Tiempo;
