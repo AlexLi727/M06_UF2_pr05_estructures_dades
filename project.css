@@ -35,4 +35,23 @@
     
 }
 
+#ListaParticipantes > table{
+    justify-self: center;
+    width: 50%;
+    background-color: greenyellow;
+    margin: 5px;
+    border-collapse: separate;
+    border-spacing: 0px;
+}
+
+#ListaParticipantes > table > tr > *{
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+#ListaParticiapantes > table > tr > div{
+    display: flex;
+    
+}
+
 

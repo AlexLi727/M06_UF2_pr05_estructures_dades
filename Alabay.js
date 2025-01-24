@@ -19,15 +19,19 @@ Participantes.push(new Participante("Alex Alabau", Vehiculos[0], Stats));
 Participantes.push(new Participante("Antonio Herrero", Vehiculos[1], Stats));
 Circuitos.push(new Circuito("Circuito Tormenta", 500, "lluvioso"));
 resetVehicles();
+resetParticipantes();
 
+//FUNCION PARA ACTUALIZAR LOS DATOS DE LOS VEHICULOS AL HABER CAMBIOS
 function resetVehicles(){
     document.getElementById("VehiculoSeleccionado").innerHTML = ("<option disabled selected> Seleccione Vehiculo </option>");
     document.getElementById("VehiculoSeleccionado2").innerHTML = ("<option disabled selected> Seleccione Vehiculo </option>");
     if(Vehiculos){
+        document.getElementById("ListaVehiculos").innerHTML = "";
         Vehiculos.forEach(function(a, index, v){
             document.getElementById("VehiculoSeleccionado").innerHTML += (`<option value = `+ v[index].Modelo +`>`+ v[index].Modelo  +`</option>`);
             document.getElementById("VehiculoSeleccionado2").innerHTML += (`<option value = `+ v[index].Modelo +`>`+ v[index].Modelo  +`</option>`);
             document.getElementById("lista-vehiculos").innerHTML += (`<option value = `+ v[index].Modelo +`>`);
+ 
             var tr = document.createElement("tr");
             var tr2 = document.createElement("tr");
             var div = document.createElement("table");
@@ -55,10 +59,41 @@ function resetVehicles(){
 
             div = document.createElement("div");
             tr.appendChild(div);
-            div.innerHTML += (`<button>sadf</button>`);
-            div.innerHTML += (`<button>sadf</button>`)
+            div.innerHTML += (`<button value = `+index+` id = EliminarVehiculoButtonIndex`+index+`>Eliminar Vehiculo</button>`);
+            document.getElementById("EliminarVehiculoButtonIndex"+index).addEventListener("click", function(){
+                var Indice = document.getElementById("EliminarVehiculoButtonIndex"+index).value
+                Vehiculos.splice(Indice, 1);
+                resetVehicles();
+            })
+
         });
     }
+}
+
+function resetParticipantes(){
+    Participantes.forEach(function(a, index, p){
+        var table = document.createElement("table");
+        var tr = document.createElement("tr");
+        var tr2 = document.createElement("tr");
+
+        document.getElementById("ListaParticipantes").appendChild(table);
+        table.appendChild(tr);
+        table.appendChild(tr2)
+
+        tr.innerHTML += `<th>Nombre</th>`;
+        tr.innerHTML += `<th>Vehiculo</th>`;
+        tr.innerHTML += `<th>1ros</th>`;
+        tr.innerHTML += `<th>2dos</th>`;
+        tr.innerHTML += `<th>3ros</th>`;
+        tr.innerHTML += `<th>Fuera de podio</th>`;
+
+        tr2.innerHTML += `<td>`+p[index].Nombre+`</td>`;
+        tr2.innerHTML += `<td>`+p[index].Vehiculo.Modelo+`</td>`;
+        tr2.innerHTML += `<td>`+p[index].Estadisticas["Primeros"]+`</td>`;
+        tr2.innerHTML += `<td>`+p[index].Estadisticas["Segundos"]+`</td>`;
+        tr2.innerHTML += `<td>`+p[index].Estadisticas["Terceros"]+`</td>`;
+        tr2.innerHTML += `<td>`+p[index].Estadisticas["Fuera"]+`</td>`;
+    })
     
 }
 
@@ -70,18 +105,47 @@ function getVehicleIndex(Model){
     }
     return -1;
 }
+let FormularioVehiculo = document.getElementById("FormularioVehiculo");
+let ListaVehiculos = document.getElementById("ListaVehiculos");
+let FormularioParticipantes = document.getElementById("FormularioParticipante");
+let FormularioCircuito = document.getElementById("FormularioCircuito");
 
 function hideForms(){
-    var FormularioVehiculo = document.getElementById("FormularioVehiculo");
-    var FormularioParticipantes = document.getElementById("FormularioParticipante");
-    var FormularioCircuito = document.getElementById("FormularioCircuito");
+    var navegarVehiculos = document.getElementById("nav-vehiculos");
+    var navegarParticipantes = document.getElementById("nav-participantes");
+    var navegarCircuitos = document.getElementById("nav-circuitos");
 
     FormularioVehiculo.style = "display: none";
+    ListaVehiculos.style = "display: none";
     FormularioParticipantes.style = "display: none";
     FormularioCircuito.style = "display: none";
+
+    navegarVehiculos.style = "color: black";
+    navegarParticipantes.style = "color: black";
+    navegarCircuitos.style = "color: black";
 }
 
+//Evento para navegar a VEHICULOS
+document.getElementById("nav-vehiculos").addEventListener("click", function(){
+    hideForms();
+    FormularioVehiculo.style = "display: block";
+    ListaVehiculos.style = "display: block";
+    this.style = "color: blue";
+});
 
+//Evento para navegar a PARTICIPANTES   
+document.getElementById("nav-participantes").addEventListener("click", function(){
+    hideForms();
+    FormularioParticipantes.style = "display: block";
+    this.style = "color: blue";
+})
+
+//Evento para navegar a CIRCUITOS
+document.getElementById("nav-circuitos").addEventListener("click", function(){
+    hideForms();
+    FormularioCircuito.style = "display: block";
+    this.style = "color: blue";
+})
 
 //Evento para crear vehiculo
 document.getElementById("NuevoVehiculoButton").addEventListener("click", function(){
