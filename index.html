@@ -49,7 +49,7 @@
     </div>
 
     <!-- FORMULARIO PARA CREACIÓN DE JUGADORES -->
-    <div class = "formulario mb-5" id = "FormularioParticipante">
+    <div class = "formulario" id = "FormularioParticipante">
         <input type = "text" placeholder = "Nombre" id = "Nombre"><br>
         <select id = "VehiculoSeleccionado2">
             <option value = "" disabled selected> Seleccione Vehiculo </option>
@@ -96,7 +96,31 @@
         <button id = "QuitarParticipanteButton"> Quitar </button> 
     </div>
 
-    <button> Cargar circuito </button>
+    <div id = "FormularioCarrera" class = "formulario">
+        <select id = "CircuitoSeleccionado">
+            <option value = "" disabled selected> Escoja Circuito </option>
+        </select>
+        <button id = "EmpezarCarreraButton"> Empezar Carrera</button>
+    </div>
+
+    <div id ="CircuitoEnCarrera">
+        <!-- <div>
+            1 <img src ="img/pngtree-pixel-art-car-icon-design-vector-png-image_6141356.png" id = "coche"><br>
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        </div>
+        <div>
+            2 <br>
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        </div>
+        <div>
+            3 <br>
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        </div>
+        <div>
+            4 <br>
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        </div> -->
+    </div>
     <datalist id = "lista-circuitos"></datalist>
 </body>
 </html>

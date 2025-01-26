@@ -40,10 +40,10 @@ export class Motocicleta extends Vehiculo{
     constructor(Modelo, Traccion, AvanceMin, AvanceMax){
         super(Modelo, Traccion, AvanceMin, AvanceMax);
     }
-    avance(AvanceMin, AvanceMax, Traccion){
-        AvanceBase = Math.floor(Math.random() * AvanceMax - AvanceMin)  + AvanceMin
+    avance(){
+        var AvanceBase = Math.floor(Math.random() * this.AvanceMax - this.AvanceMin)  + this.AvanceMin
         var AvanceFinal;
-        switch(Traccion){
+        switch(this.Traccion){
             case("blanda"):
                 AvanceFinal = AvanceBase;
                 break;
@@ -81,13 +81,13 @@ export class Coche extends Vehiculo{
     constructor(Modelo, Traccion, AvanceMin, AvanceMax){
         super(Modelo, Traccion, AvanceMin, AvanceMax);
     }
-    avance(AvanceMin, AvanceMax, Traccion, Entorno){
-        AvanceBase = Math.floor(Math.random() * AvanceMax - AvanceMin)  + AvanceMin;
-        if(Traccion == "mediana" || Entorno == "humedo"){
+    avance(Entorno){
+        var AvanceBase = Math.floor(Math.random() * this.AvanceMax - this.AvanceMin)  + this.AvanceMin;
+        if(this.Traccion == "mediana" || Entorno == "humedo"){
             AvanceBase + 2;
-        }else if(Traccion == "blanda" && Entorno == "lluvioso"){
+        }else if(this.Traccion == "blanda" && Entorno == "lluvioso"){
             AvanceBase + 4;
-        }else if(Traccion == "Dura" && Entorno == "seco"){
+        }else if(this.Traccion == "Dura" && Entorno == "seco"){
             AvanceBase + 4;
         }
         return AvanceBase;

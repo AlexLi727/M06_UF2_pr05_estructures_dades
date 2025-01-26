@@ -53,5 +53,27 @@
     display: flex;
     
 }
+#CircuitoEnCarrera{
+    display:grid;
+    justify-self: center;
+    background-color: aqua;
+    width: 70%;
+    height: 50%;
+    row-gap: 50px;
+    padding-bottom: 5%;
+}
+#coche{
+    position: relative;
+    
+    width: 100px;
+}
+.CocheCarrera{
+    position: relative;
+    
+    width: 100px;
+}
+.carril{
+    border-bottom: 2px dashed black;
+}
 
 
